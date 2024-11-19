@@ -12,4 +12,5 @@ class Customer(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=20)
     address = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
    
