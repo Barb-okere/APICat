@@ -8,4 +8,5 @@ class Customer(models.Model):
     # address: the address of the customer
     # created_at: the date and time when the customer was created
 
-    
+    name = models.CharField(max_length=100)
+   
