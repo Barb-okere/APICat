@@ -9,4 +9,5 @@ class Customer(models.Model):
     # created_at: the date and time when the customer was created
 
     name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
    
