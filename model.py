@@ -29,4 +29,5 @@ class Order(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name='orders'
                                  )
+    order_date = models.DateField(auto_now_add=True)
     
