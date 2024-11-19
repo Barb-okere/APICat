@@ -30,4 +30,5 @@ class Order(models.Model):
                                  related_name='orders'
                                  )
     order_date = models.DateField(auto_now_add=True)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     
