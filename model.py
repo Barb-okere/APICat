@@ -13,4 +13,14 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=20)
     address = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-   
+
+    def __str__(self):
+        return self.name
+    
+class Order(models.Model):
+    # It represents an order in the e-commerce system with fields:
+    # customer: ForeignKey to the Customer model (one-to-many relationship).
+    # order_date: Date when the order was placed.
+    # total_amount: Total monetary value of the order.
+    # shipping_address: Address where the order will be shipped.
+    # created_at: Date and time when the order was created.
