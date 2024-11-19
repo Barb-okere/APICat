@@ -24,3 +24,9 @@ class Order(models.Model):
     # total_amount: Total monetary value of the order.
     # shipping_address: Address where the order will be shipped.
     # created_at: Date and time when the order was created.
+
+    customer = models.ForeignKey(Customer, 
+                                 on_delete=models.CASCADE,
+                                 related_name='orders'
+                                 )
+    
