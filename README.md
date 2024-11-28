@@ -1,9 +1,9 @@
 # APICat
-E-commerce Models - Django Project
-This project defines three core models for an e-commerce system using Django: Customer, Order, and OrderItem.
+E-commerce API - Django Project
+This project defines a simple e-commerce API using Django REST Framework (DRF) to manage Customers, Orders, and Order Items.
 
-Setting Up the Environment
-Install Python and Django:
+Setting Up the Environment and Running the API
+Install Python and Dependencies:
 Ensure you have Python (version 3.6 or later) and pip (package manager) installed on your system. You can download them from https://www.python.org/downloads/.
 Create Virtual Environment (Optional):
 It's recommended to create a virtual environment to isolate project dependencies. Use venv or virtualenv depending on your Python version:
@@ -17,51 +17,79 @@ source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate.bat  # Windows
 Use code with caution.
 
-Install Django:
-Install Django using pip inside the virtual environment:
+Install Dependencies:
+Install Django and Django REST Framework inside the virtual environment:
 Bash
-pip install django
+pip install django djangorestframework
 Use code with caution.
 
-Running the Project
-Create a Django Project:
+Project Structure
+ecommerce_api/
+├── manage.py
+├── ecommerce_api/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── models/  # Your models.py file goes here
+└── tests/  # Testing script will be placed here (optional)
+Note: This assumes you have a models.py file with your models defined. Replace the placeholder with your actual file.
+
+Create Django Project:
 Navigate to your desired project directory and run:
 Bash
-django-admin startproject ecommerce_models
+django-admin startproject ecommerce_api
 Use code with caution.
 
-Create App (models.py is located here):
-Inside the ecommerce_models directory, create an app for your models:
-Bash
-cd ecommerce_models
-django-admin startapp models
-Use code with caution.
-
-Copy Models:
-Copy the provided models.py file to the models app directory.
-Register Models (settings.py):
-Open ecommerce_models/settings.py and add your app to INSTALLED_APPS:
-Python
-INSTALLED_APPS = [
-    # ... other apps
-    'models',
-]
-Use code with caution.
-
-Migrate (Create Tables):
+Copy Models (if applicable):
+If you have a separate models.py file, copy it to the models directory within your project.
+Running the Development Server
+Configure Settings:
+Edit ecommerce_api/settings.py and configure database settings, installed apps (include 'rest_framework'), and any other necessary options.
+Migrate Database:
 Run database migrations to create tables based on your models:
 Bash
 python manage.py makemigrations
 python manage.py migrate
 Use code with caution.
 
-Run Development Server:
+Start Server:
 Start the Django development server:
 Bash
 python manage.py runserver
 Use code with caution.
 
-Access the admin interface at http://127.0.0.1:8000/admin/ to view and interact with your models.
+Access the browsable API at http://127.0.0.1:8000/api/ to explore available endpoints.
+Testing the API (Optional)
+Testing Script (Create a tests.py file in your project):
+
+You can write Python scripts to test API endpoints with requests library. Here's an example:
+<!-- end list -->
+
+Python
+import requests
+
+# Replace with your actual API base URL
+base_url = "http://127.0.0.1:8000/api/"
+
+# Example: Create a customer
+customer_data = {"name": "John Doe", "email": "john.doe@example.com", "phone_number": "+1234567890", "address": "123 Main St"}
+response = requests.post(f"{base_url}customers/", json=customer_data)
+print(f"Create Customer Response: {response.status_code}, {response.json()}")
+
+# Example: Get all customers
+response = requests.get(f"{base_url}customers/")
+print(f"Get All Customers Response: {response.status_code}, {response.json()}")
+
+# ... Add tests for other endpoints and functionalities ...
+Use code with caution.
+
+Run Tests:
+
+Execute your testing script from the command line:
+Bash
+python tests.py
+Use code with caution.
+
 Uploading Project to GitHub
 Create a GitHub Repository:
 Create a new repository on your GitHub account.
@@ -80,29 +108,7 @@ Use code with caution.
 Commit Changes:
 Commit the changes with a descriptive message:
 Bash
-git commit -m "Added E-commerce models"
+git commit -m "Added E-commerce API with models and tests"
 Use code with caution.
 
-Link to Remote Repository:
-Set up the remote repository URL pointing to your GitHub repository:
-Bash
-git remote add origin <your_github_repo_url>
-Use code with caution.
-
-Replace <your_github_repo_url> with the actual URL of your repository.
-Push to GitHub:
-Push your committed code to the remote repository:
-Bash
-git push origin main
-Use code with caution.
-
-Note: This assumes you have configured SSH keys for secure connection with GitHub. Refer to GitHub's documentation for alternative authentication methods.
-
-This README provides a basic guide to setting up and running the Django project with the provided models. You can further explore Django documentation for creating more advanced features and functionalities.
-
-
-
-
-
-
-
+**Link
